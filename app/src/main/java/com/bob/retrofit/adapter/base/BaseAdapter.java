@@ -27,7 +27,16 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BindingHolder>
     }
 
     @Override
-    public abstract void onBindViewHolder(BindingHolder holder, int position);
+    public void onBindViewHolder(BindingHolder holder, int position) {
+        holder.itemView.setOnClickListener(v -> {
+            if (onItemClickListener != null) {
+                onItemClickListener.onItemClickListener(getItem(position));
+            }
+        });
+        onBind(holder, position);
+    }
+
+    public abstract void onBind(BindingHolder holder, int position);
 
     @Override
     public int getItemCount() {
@@ -57,7 +66,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BindingHolder>
 
     public abstract int getConvertView(int viewType);
 
-    public interface OnItemClickListener<T>{
+    public interface OnItemClickListener<T> {
         void onItemClickListener(T t);
     }
 

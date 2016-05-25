@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide;
  */
 public class StoryAdapter extends BaseAdapter<Story> {
     @Override
-    public void onBindViewHolder(BindingHolder holder, int position) {
+    public void onBind(BindingHolder holder, int position) {
         ItemStoryBinding binding = (ItemStoryBinding) holder.getBinding();
         binding.cardView.setUseCompatPadding(true);
         Story story = getItem(position);

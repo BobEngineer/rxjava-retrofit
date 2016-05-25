@@ -1,5 +1,9 @@
 package com.bob.retrofit.entity;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+
+import com.bob.retrofit.BR;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -7,7 +11,7 @@ import java.util.List;
 /**
  * Created by bob on 2016/5/25.
  */
-public class Story {
+public class Story extends BaseObservable{
 
     private int id;
 
@@ -30,12 +34,14 @@ public class Story {
         this.id = id;
     }
 
+    @Bindable
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
+        notifyPropertyChanged(BR.title);
     }
 
     public String getGaPrefix() {
